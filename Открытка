@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Открытка</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffe6f0, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  max-width: 420px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 {
+  color: #d63384;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+button {
+  padding: 14px 26px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: #d63384;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  background: #c2186a;
+}
+</style>
+</head>
+
+<body>
+
+<button id="openBtn">Открыть открытку 💌</button>
+
+<div class="card" id="card">
+  <h1 id="title"></h1>
+
+  <p>
+    Вас я встретила летом этого года, да мы поначалу вообще не общались,
+    но постепенно стали сближаться.
+    И вот сейчас вы для меня больше чем просто учитель или знакомый —
+    вы стали родным для меня человеком, которого я так близко подпустила
+    к себе и ни капельки не пожалела об этом ❤️
+  </p>
+
+  <p>
+    Я вас люблю, вами восхищаюсь и всегда уважаю,
+    даже если обижена на вас ☺️
+  </p>
+
+  <p>
+    Так что все обиды оставим в 2025 году,
+    а 2026 год начнём с улыбкой на лице 💖
+  </p>
+
+  <p>
+    Собирайте чемодан — я вас забираю в 2026 год ❤️
+  </p>
+</div>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b63bca3c3.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name") || "для тебя";
+
+document.getElementById("title").innerText = name + " 🤍";
+
+document.getElementById("openBtn").onclick = () => {
+  document.getElementById("openBtn").style.display = "none";
+  document.getElementById("card").classList.add("show");
+  document.getElementById("music").play();
+};
+</script>
+
+</body>
+</html>
